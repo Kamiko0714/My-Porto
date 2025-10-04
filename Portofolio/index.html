@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kamiko's Portofolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="starfield"></canvas>
+  <!-- Header -->
+  <header>
+    <div>
+      <h1 id="name" class="typing">Dewa Athallah Putra Kamiko</h1>
+      <p id="role">Interest in IT In  frastructure, Platform Engineering, System Administration, and DevOps.</p>
+    </div>
+    <nav>
+      <button id="downloadBtn" class="glow-btn">Download CV</button>
+      <button id="certBtn">Sertifikat</button>
+      <button id="projBtn">Kegiatan</button>
+      <button id="terminal-btn">Terminal</button>
+      <select aria-label="label for the select" id="lang-switcher">
+        <option value="id">ID</option>
+        <option value="en">EN</option>
+        <option value="jp">日本語</option>
+      </select>
+    </nav>
+  </header>
+
+  <!-- Halo Section -->
+  <section class="card">
+    <h2 id="hello-title">Halo 👋</h2>
+    <p id="hello-text">
+      Saya lulusan Informatika dari Institut Teknologi Indonesia (ITI) dengan minat dan fokus utama yang kuat di bidang IT Infrastructure, Platform Engineering, System Administration, dan DevOps. Saya mencari posisi di mana saya bisa belajar, berkontribusi, dan terus berkembang di area tersebut.
+    </p>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="card">
+    <h2 id="skills-title">Kemampuan Teknis (Hard Skills)</h2>
+    <div id="skills-list">
+      <span class="badge">Kubernetes</span>
+      <span class="badge">Ansible</span>
+      <span class="badge">Bash Scripting</span>
+      <span class="badge">Cisco</span>
+      <span class="badge">Mikrotik</span>
+      <span class="badge">Prometheus</span>
+      <span class="badge">Grafana</span>
+      <span class="badge">Google Cloud</span>
+      <span class="badge">Azure</span>
+      <span class="badge">Go (Golang)</span>
+      <span class="badge">Bash</span>
+      <span class="badge">Flutter (Dart)</span>
+    </div>
+  </section>
+
+<!-- Kegiatan Section -->
+<section class="card">
+  <h2 id="projects-title">Kegiatan & Pengalaman</h2>
+  <div class="timeline" id="projects-desc">
+    <div class="timeline-item">Asisten Laboratorium (Semester 3 – Semester 8)</div>
+    <div class="timeline-item">Kegiatan Kampus Merdeka Indobot – Integrasi IoT (GCP + Flutter)</div>
+    <div class="timeline-item">Kegiatan Mandiri – Infrastruktur & DevOps</div>
+    <div class="timeline-item">Kegiatan Mandiri – Otomasi Server via Mobile (Go + Bash + Flutter)</div>
+  </div>
+</section>
+
+  <!-- Contact Section -->
+  <section class="card">
+    <h2 id="contact-title">📬 Kontak</h2>
+    <p>✉️ Email: <a href="mailto:email@domain.com">email@domain.com</a></p>
+    <p>🔗 LinkedIn: <a href="https://linkedin.com/in/username">linkedin.com/in/username</a></p>
+    <p>🐙 GitHub: <a href="https://github.com/username">github.com/username</a></p>
+  </section>
+
+  <!-- Terminal Modal -->
+  <div class="modal" id="terminal-modal">
+    <div class="modal-content">
+      <span class="close-btn" id="close-terminal">X</span>
+      <div class="terminal" id="terminal-box">
+        <div class="output" id="terminal-welcome"></div>
+        <div class="output" id="terminal-help"></div>
+        <div id="output-container"></div>
+        <div class="input-line">
+          <label for="command-input" class="prompt">visitor@portfolio:~$</label>
+          <input type="text" id="command-input" autofocus>
+        </div>
+      </div>
+      <div class="locked-overlay" id="jp-locked" style="display:none;">
+        <p>申し訳ありませんが、現在管理者は日本語を勉強中です。<br>
+        Sorry, the admin is still learning Japanese for better results.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © <script>document.write(new Date().getFullYear());</script> <span id="footer-name">Kamiko0714</span>.
+  </footer>
+
+  <!-- Js  Files -->
+  <script src="starfield.js"></script>
+  <script src="js/lang-id.js" defer></script>
+  <script src="js/lang-en.js" defer></script>
+  <script src="js/lang-jp.js" defer></script>
+
+  <!-- Main Script -->
+  <script src="js/main.js" defer></script>  
+</body>
+</html>

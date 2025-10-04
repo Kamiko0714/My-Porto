@@ -1,0 +1,310 @@
+/* === Global Style === */
+body {
+  background-color: #0b0f13;
+  color: #e2e8f0;
+  font-family: 'Fira Code', monospace;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: #f8fafc;
+  margin-bottom: 0.5rem;
+}
+
+a {
+  color: #60a5fa;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* === Header & Navigation === */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: rgba(17, 24, 39, 0.9); /* transparan dikit */
+  backdrop-filter: blur(2.5px); /* efek kaca */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); /* kasih bayangan biar melayang */
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  flex-wrap: wrap;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+nav a, nav button, nav select {
+  background: #1f2937;
+  border: 1px solid #374151;
+  color: #e2e8f0;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+nav a:hover, nav button:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+}
+
+/* === Sections === */
+section {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+ul {
+  padding-left: 1.2rem;
+}
+
+/* === Card === */
+/* === Card (Centered) === */
+.card {
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem auto;   /* bikin posisi card ke tengah */
+  max-width: 700px;      /* biar nggak melebar penuh */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+  text-align: left;      /* pastikan tulisan tetap rata kiri */
+}
+.card:hover {
+  transform: translateY(-4px);
+}
+
+
+/* === Badges === */
+.badge {
+  display: inline-block;
+  background: #1f2937;
+  border: 1px solid #374151;
+  color: #e2e8f0;
+  padding: 0.3rem 0.7rem;
+  margin: 0.2rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+}
+.badge:hover {
+  background: #2563eb;
+}
+
+/* === Timeline === */
+.timeline {
+  border-left: 2px solid #374151;
+  margin-left: 1rem;
+  padding-left: 1rem;
+}
+.timeline-item {
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+.timeline-item::before {
+  content: "•";
+  position: absolute;
+  left: -1.3rem;
+  color: #2563eb;
+  font-size: 1.2rem;
+}
+
+/* === Typing Animation === */
+.typing {
+  border-right: 2px solid #e2e8f0;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: typing 4s steps(26, end), blink 0.7s step-end infinite;
+}
+@keyframes typing {
+  from { width: 0 }
+  to { width: 45% }
+}
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+/* === Buttons (Glow) === */
+.glow-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+.glow-btn:hover {
+  box-shadow: 0 0 10px #2563eb, 0 0 20px #2563eb;
+  transform: translateY(-2px);
+}
+
+/* === Footer === */
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  border-top: 1px solid #1f2937;
+  margin-top: 2rem;
+}
+
+/* === Modal (Terminal) === */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #1e1e1e;
+  padding: 1rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 800px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 1.2rem;
+  color: #e2e8f0;
+  cursor: pointer;
+}
+
+.terminal {
+  background-color: #1e1e1e;
+  color: #00ff00;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  min-height: 300px;
+  overflow-y: auto;
+}
+
+.prompt {
+  color: #4caf50;
+}
+
+.input-line {
+  display: flex;
+  align-items: center;
+}
+
+#command-input {
+  background: transparent;
+  border: none;
+  color: #00ff00;
+  font-family: inherit;
+  flex: 1;
+  margin-left: 5px;
+  outline: none;
+}
+
+.output {
+  margin: 0.4rem 0;
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  nav a, nav button, nav select {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  section {
+    padding: 0 0.5rem;
+  }
+
+  .card {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .typing {
+    font-size: 1.2rem;
+    animation: typing 3s steps(20, end), blink 0.7s step-end infinite;
+  }
+
+  .timeline {
+    border-left: none;
+    padding-left: 0;
+    margin-left: 0;
+  }
+  .timeline-item::before {
+    display: none;
+  }
+
+  .modal-content {
+    width: 95%;
+    max-width: 100%;
+    height: 90%;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.2rem;
+  }
+  h2 {
+    font-size: 1rem;
+  }
+  .badge {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+  }
+}
+
+/* === Starfield Background === */
+#starfield {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: #0b0f13;
+}

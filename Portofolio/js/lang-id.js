@@ -27,6 +27,6 @@ window.langID = {
     about: "Berminat di bidang IT Infrastructure, Platform Engineering, System Administration, dan DevOps, suka ngoprek server, Kubernetes.",
     skills: "<ul><li>Server Management</li><li>Jaringan</li><li>Linux</li><li>Cloud</li></ul>",
     projects: "<ul><li>Integrasi IoT (GCP + Flutter)</li><li>Infrastruktur & DevOps</li><li>Otomasi Server via Mobile</li></ul>",
-    contact: "Email: email@domain.com<br>GitHub: github.com/username"
+    contact: "Email: kamiko071403@gmail.com<br>GitHub: github.com/Kamiko0714"
   }
 };

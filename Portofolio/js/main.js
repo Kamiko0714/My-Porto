@@ -121,6 +121,24 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "projects.html";
   });
 
+  // ✅ Tambahan tombol download CV/Resume
+  const downloadBtn = document.getElementById('downloadBtn');
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', () => {
+      let filePath = '';
+      if (currentLang === 'id') filePath = 'cv/cv.pdf';
+      else if (currentLang === 'en') filePath = 'cv/resume.pdf';
+      else if (currentLang === 'jp') filePath = 'cv/resume.pdf'; // fallback
+
+      const link = document.createElement('a');
+      link.href = filePath;
+      link.download = filePath.split('/').pop();
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  }
+
   // Deteksi bahasa awal
   function detectBrowserLang() {
     const saved = localStorage.getItem("preferredLang");

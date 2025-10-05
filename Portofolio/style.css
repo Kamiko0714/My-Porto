@@ -308,3 +308,14 @@ footer {
   z-index: -1;
   background: #0b0f13;
 }
+
+#starfield {
+  position: fixed;     
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;         
+  pointer-events: none; 
+  display: block;
+}

@@ -66,6 +66,7 @@ nav a:hover, nav button:hover {
   transform: translateY(-2px);
 }
 
+/* Glow button khusus Download CV */
 .glow-btn {
   background: #2563eb;
   border: none;
@@ -101,6 +102,7 @@ section {
   transform: translateY(-4px);
 }
 
+/* Badges */
 .badge {
   display: inline-block;
   background: #1f2937;
@@ -255,20 +257,22 @@ footer {
     z-index: 1001;
   }
 
-  /* Mobile nav slide dari kanan, tetap tersembunyi */
+  /* Mobile nav slide dari kanan, sepenuhnya tersembunyi */
   #main-nav {
     display: flex;
     flex-direction: column;
     position: fixed;
     top: 0;
-    right: -70%; /* start offscreen */
-    width: 70%;
+    right: -70vw;      /* gunakan vw agar proporsional */
+    width: 70vw;
+    max-width: 300px;  /* mencegah terlalu lebar di tablet */
     height: 100vh;
     background: #111827;
     padding: 6rem 20px 40px;
     transition: right 0.3s ease;
     z-index: 1000;
     overflow-y: auto;
+    overflow-x: hidden;
   }
 
   #main-nav.active { right: 0; }

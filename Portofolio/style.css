@@ -1,16 +1,16 @@
-/* === Global Style === */
+/* === Global Styles === */
 body {
-  background-color: #0b0f13;
-  color: #e2e8f0;
-  font-family: 'Fira Code', monospace;
   margin: 0;
   padding: 0;
   line-height: 1.6;
+  font-family: 'Fira Code', monospace;
+  background-color: #0b0f13;
+  color: #e2e8f0;
 }
 
 h1, h2, h3 {
-  color: #f8fafc;
   margin-bottom: 0.5rem;
+  color: #f8fafc;
 }
 
 a {
@@ -21,37 +21,35 @@ a:hover {
   text-decoration: underline;
 }
 
-/* === Header & Navigation (Desktop) === */
+/* === Header & Navigation === */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: rgba(17, 24, 39, 0.9); /* transparan dikit */
-  backdrop-filter: blur(2.5px); /* efek kaca */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); /* kasih bayangan biar melayang */
+  background-color: rgba(17,24,39,0.9);
+  backdrop-filter: blur(2.5px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.6);
   position: sticky;
   top: 0;
   z-index: 50;
-  /* Atur sebagai relative agar tombol burger di mobile bisa diposisikan absolute */
-  position: relative; 
 }
 
 header h1 {
   font-size: 1.5rem;
   margin: 0;
-  /* Kunci lebar agar tidak memanjang dan menabrak tombol burger di mobile */
-  white-space: nowrap; 
+  white-space: nowrap;
+  max-width: calc(100% - 70px);
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Navigasi Desktop (Normal) */
 nav {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-/* Aturan dasar untuk semua elemen nav */
 nav a, nav button, nav select {
   background: #1f2937;
   border: 1px solid #374151;
@@ -67,40 +65,44 @@ nav a:hover, nav button:hover {
   transform: translateY(-2px);
 }
 
-/* Sembunyikan tombol burger di Desktop */
-.burger-menu-btn {
-    display: none; 
+/* Glow button khusus Download CV */
+.glow-btn {
+  background: #2563eb;
+  border: none;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 
-/* === Sections === */
+.glow-btn:hover {
+  box-shadow: 0 0 10px #2563eb, 0 0 20px #2563eb;
+  transform: translateY(-2px);
+}
+
+/* === Sections & Cards === */
 section {
   max-width: 800px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
 
-ul {
-  padding-left: 1.2rem;
-}
-
-/* === Card === */
 .card {
   background: #111827;
   border: 1px solid #1f2937;
   border-radius: 12px;
   padding: 1.5rem;
-  margin: 1.5rem auto; 
-  max-width: 700px; 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  margin: 1.5rem auto;
+  max-width: 700px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   transition: transform 0.2s ease;
-  text-align: left; 
 }
 .card:hover {
   transform: translateY(-4px);
 }
 
-
-/* === Badges === */
+/* Badges */
 .badge {
   display: inline-block;
   background: #1f2937;
@@ -116,7 +118,7 @@ ul {
   background: #2563eb;
 }
 
-/* === Timeline === */
+/* Timeline */
 .timeline {
   border-left: 2px solid #374151;
   margin-left: 1rem;
@@ -134,38 +136,18 @@ ul {
   font-size: 1.2rem;
 }
 
-/* === Typing Animation === */
+/* Typing animation */
 .typing {
   border-right: 2px solid #e2e8f0;
   white-space: nowrap;
   overflow: hidden;
   display: inline-block;
-  animation: typing 4s steps(26, end), blink 0.7s step-end infinite;
+  animation: typing 4s steps(26,end), blink 0.7s step-end infinite;
 }
-@keyframes typing {
-  from { width: 0 }
-  to { width: 45% }
-}
-@keyframes blink {
-  50% { border-color: transparent }
-}
+@keyframes typing { from { width:0 } to { width:45% } }
+@keyframes blink { 50% { border-color: transparent } }
 
-/* === Buttons (Glow) === */
-.glow-btn {
-  background: #2563eb;
-  color: white;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
-}
-.glow-btn:hover {
-  box-shadow: 0 0 10px #2563eb, 0 0 20px #2563eb;
-  transform: translateY(-2px);
-}
-
-/* === Footer === */
+/* Footer */
 footer {
   text-align: center;
   padding: 2rem;
@@ -175,7 +157,7 @@ footer {
   margin-top: 2rem;
 }
 
-/* === Modal (Terminal) === */
+/* Terminal Modal */
 .modal {
   display: none;
   position: fixed;
@@ -184,8 +166,7 @@ footer {
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0,0,0,0.6);
   justify-content: center;
   align-items: center;
 }
@@ -218,9 +199,7 @@ footer {
   overflow-y: auto;
 }
 
-.prompt {
-  color: #4caf50;
-}
+.prompt { color: #4caf50; }
 
 .input-line {
   display: flex;
@@ -237,146 +216,88 @@ footer {
   outline: none;
 }
 
-.output {
-  margin: 0.4rem 0;
-}
+.output { margin: 0.4rem 0; }
 
-/* === Starfield Background === */
+/* Starfield */
 #starfield {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
   background: #0b0f13;
-  pointer-events: none; 
-  display: block;
+  pointer-events: none;
 }
 
-/* === Responsive Design (Mobile: Max 768px) === */
+/* === Responsive: Mobile (max-width 768px) === */
+.burger-menu-btn { display: none; } /* default desktop hidden */
+
 @media (max-width: 768px) {
-    
-    /* Perbaikan Header Mobile */
-    header {
-        /* Kembali ke layout baris agar nama dan burger sejajar */
-        flex-direction: row; 
-        align-items: center;
-        padding: 1rem;
-        /* Pastikan elemen di dalamnya tidak terpotong */
-        overflow: hidden; 
-    }
-    
-    /* 1. Mengatasi Tabrakan Judul */
-    header h1 {
-        /* Memastikan judul tidak memanjang melewati batas yang diizinkan */
-        max-width: calc(100% - 70px); 
-        overflow: hidden; 
-        text-overflow: ellipsis; 
-        white-space: nowrap; 
-    }
-    
-    /* 2. Tampilkan Tombol Burger */
-    .burger-menu-btn {
-        display: block; 
-        position: absolute;
-        top: 1rem; 
-        right: 1rem; 
-        background: none;
-        border: none;
-        color: white; 
-        font-size: 24px;
-        cursor: pointer;
-        z-index: 1001; 
-    }
+  header { flex-direction: row; align-items: center; padding:1rem; }
 
-    /* 3. Navigasi Mobile (KUNCI: Sembunyikan secara default) */
-    #main-nav {
-        display: none; 
-        
-        /* Gaya Overlay Mobile */
-        flex-direction: column;
-        position: fixed; 
-        top: 0;
-        right: 0; 
-        /* Menggunakan 100vh dan auto agar menu dapat mengisi penuh dan di-scroll */
-        min-height: 100vh;
-        height: auto;
-        width: 70%; 
-        background-color: #111827; 
-        /* Padding atas dan bawah yang cukup (40px di bawah untuk mengatasi toolbar browser) */
-        padding: 6rem 20px 40px; 
-        z-index: 1000;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
-        /* Jika item menu sangat banyak, menu akan bisa di-scroll */
-        overflow-y: auto; 
+  /* Burger menu muncul hanya di mobile */
+  .burger-menu-btn {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+  }
 
-        /* Animasi Slide */
-        transition: transform 0.3s ease-in-out;
-        transform: translateX(100%); 
-    }
+  /* Mobile nav */
+  #main-nav {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%;
+    height: 100%;
+    background: #111827;
+    padding: 6rem 20px 40px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+  #main-nav.active { transform: translateX(0); }
 
-    /* 4. Aturan Tampilkan Navigasi */
-    #main-nav.active {
-        display: flex; 
-        transform: translateX(0); 
-    }
+  #main-nav button, #main-nav a, #main-nav select {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 15px;
+    text-align: center;
+    display: block;
+    background: #1f2937;
+    border: 1px solid #374151;
+  }
+  #main-nav .glow-btn {
+    background: #2563eb;
+    border: none;
+    color: white;
+  }
 
-    /* 5. Gaya Tombol di dalam Burger (Solusi Latar Belakang Hilang pada semua elemen Nav) */
-    #main-nav a,
-    #main-nav button,
-    #main-nav select {
-        width: 100%; 
-        margin-bottom: 15px; 
-        padding: 15px;
-        text-align: center;
-        /* Mengunci latar belakang agar tidak hilang */
-        background: #1f2937 !important; 
-        border: 1px solid #374151;
-        transition: background 0.2s, transform 0.2s;
-        /* Pastikan elemen 'a' juga terlihat seperti tombol, bukan hanya teks link */
-        display: block; 
-    }
-    
-    /* Pastikan glow-btn (Download CV) tetap terlihat beda */
-    #main-nav .glow-btn {
-        background: #2563eb !important;
-        border: none;
-    }
+  /* Timeline mobile */
+  .timeline { border-left: none; padding-left:0; margin-left:0; }
+  .timeline-item::before { display: none; }
 
-    /* Perbaikan Responsive Lain */
-    .typing {
-        animation: typing 3s steps(20, end), blink 0.7s step-end infinite;
-    }
-    @keyframes typing {
-        from { width: 0 }
-        to { width: 100% } 
-    }
-    
-    .timeline {
-        border-left: none;
-        padding-left: 0;
-        margin-left: 0;
-    }
-    .timeline-item::before {
-        display: none;
-    }
-    
-    .modal-content {
-        width: 95%;
-        height: 90%;
-    }
+  /* Typing animation mobile */
+  .typing { animation: typing 3s steps(20,end), blink 0.7s step-end infinite; }
+  @keyframes typing { from {width:0} to {width:100%} }
+
+  /* Modal content */
+  .modal-content { width: 95%; height: 90%; }
 }
 
+/* Extra small screens */
 @media (max-width: 480px) {
-  h1 {
-    font-size: 1.2rem;
-  }
-  h2 {
-    font-size: 1rem;
-  }
-  .badge {
-    font-size: 0.75rem;
-    padding: 0.2rem 0.5rem;
-  }
+  h1 { font-size: 1.2rem; }
+  h2 { font-size: 1rem; }
+  .badge { font-size: 0.75rem; padding: 0.2rem 0.5rem; }
 }

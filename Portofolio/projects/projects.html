@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects - Kamiko's Portfolio</title>
+  <link rel="stylesheet" href="project.css">
+</head>
+<body>
+  <canvas id="starfield"></canvas>
+
+  <header>
+    <div>
+      <h1 id="page-title" class="typing">Projects</h1>
+      <p id="page-subtitle">Kumpulan proyek dan pengalaman yang saya kerjakan.</p>
+    </div>
+    <nav>
+      <a href="../index.html" id="backHome">🏠 Kembali</a>
+      <select aria-label="Language Selector" id="lang-switcher">
+        <option value="id">🇮🇩 ID</option>
+        <option value="en">🇬🇧 EN</option>
+        <option value="jp">🇯🇵 日本語</option>
+      </select>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2 id="listTitle">Daftar Proyek</h2>
+
+      <div class="project-item">
+        <img src="../sertifikat/1.jpg" alt="Asisten Laboratorium" class="project-img">
+        <div class="project-text">
+          <h3 class="proj-title">👨‍💻 Asisten Laboratorium</h3>
+          <p class="proj-desc">Deskripsi awal...</p>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <img src="../projects/img/iot.png" alt="Voltnesia" class="project-img">
+        <div class="project-text">
+          <h3 class="proj-title">🎓 Voltnesia</h3>
+          <p class="proj-desc">Deskripsi awal...</p>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <img src="../projects/img/iot.png" alt="Voltnesia" class="project-img">
+        <div class="project-text">
+          <h3 class="proj-title">🎓 Voltnesia</h3>
+          <p class="proj-desc">Deskripsi awal...</p>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <img src="../projects/img/iot.png" alt="Voltnesia" class="project-img">
+        <div class="project-text">
+          <h3 class="proj-title">🎓 Voltnesia</h3>
+          <p class="proj-desc">Deskripsi awal...</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <script>document.write(new Date().getFullYear());</script> <span id="footer-name">Kamiko0714</span>.
+  </footer>
+
+  <!-- Starfield -->
+  <script src="../starfield.js" defer></script>
+
+  <!-- Bahasa -->
+  <script src="../projects/lang/id.js" defer></script>
+  <script src="../projects/lang/en.js" defer></script>
+  <script src="../projects/lang/jp.js" defer></script>
+
+  <!-- Switcher -->
+  <script src="../projects/lang-switcher.js" defer></script>
+</body>
+</html>

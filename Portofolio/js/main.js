@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const projBtn = document.getElementById('projBtn');
   if (projBtn) projBtn.addEventListener('click', () => {
-    window.location.href = "projects.html";
+    window.location.href = "projects/projects.html";
   });
 
   // ✅ Tambahan tombol download CV/Resume

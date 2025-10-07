@@ -319,3 +319,63 @@ footer {
   pointer-events: none; 
   display: block;
 }
+
+/* Sembunyikan tombol burger secara default */
+.burger-menu-btn {
+    display: none; 
+}
+
+/* Pastikan nav ditampilkan secara default */
+header nav {
+    display: flex; /* Atur tampilan horizontal untuk desktop */
+    gap: 10px; /* Jarak antar tombol */
+}
+
+@media (max-width: 768px) {
+    
+    /* 1. Tampilkan tombol burger dan sembunyikan nav */
+    .burger-menu-btn {
+        display: block; /* Tampilkan tombol burger */
+        position: absolute; /* Posisikan bebas */
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: white; /* Sesuaikan warna */
+        font-size: 30px;
+        cursor: pointer;
+        z-index: 1001; /* Pastikan di atas elemen lain */
+    }
+
+    /* 2. Navigasi mobile - Sembunyikan secara default */
+    header nav {
+        /* Ubah menjadi menu vertikal full-screen/side-bar */
+        display: none; 
+        flex-direction: column;
+        position: fixed; /* Navigasi mengambang di atas konten */
+        top: 0;
+        right: 0;
+        width: 100%; /* Lebar penuh */
+        height: 100%; /* Tinggi penuh */
+        background-color: rgba(0, 0, 0, 0.95); /* Latar belakang gelap transparan */
+        padding: 80px 20px 20px;
+        z-index: 1000;
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(100%); /* Sembunyikan di luar layar */
+    }
+
+    /* 3. Kelas untuk menampilkan nav saat tombol diklik */
+    header nav.active {
+        display: flex;
+        transform: translateX(0); /* Geser masuk ke layar */
+    }
+
+    /* 4. Atur tampilan tombol-tombol di dalam menu */
+    header nav button,
+    header nav select {
+        width: 100%; /* Lebar penuh agar mudah diklik */
+        margin-bottom: 15px; /* Jarak antar tombol */
+        padding: 15px;
+        text-align: left;
+    }
+}

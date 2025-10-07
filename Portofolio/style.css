@@ -21,7 +21,7 @@ a:hover {
   text-decoration: underline;
 }
 
-/* === Header & Navigation === */
+/* === Header & Navigation (Desktop) === */
 header {
   display: flex;
   justify-content: space-between;
@@ -33,7 +33,8 @@ header {
   position: sticky;
   top: 0;
   z-index: 50;
-  flex-wrap: wrap;
+  /* Atur sebagai relative agar tombol burger di mobile bisa diposisikan absolute */
+  position: relative; 
 }
 
 header h1 {
@@ -41,12 +42,11 @@ header h1 {
   margin: 0;
 }
 
+/* Navigasi Desktop (Normal) */
 nav {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   gap: 0.5rem;
-  margin-top: 0.5rem;
 }
 
 nav a, nav button, nav select {
@@ -64,6 +64,11 @@ nav a:hover, nav button:hover {
   transform: translateY(-2px);
 }
 
+/* Sembunyikan tombol burger di Desktop */
+.burger-menu-btn {
+    display: none; 
+}
+
 /* === Sections === */
 section {
   max-width: 800px;
@@ -76,17 +81,16 @@ ul {
 }
 
 /* === Card === */
-/* === Card (Centered) === */
 .card {
   background: #111827;
   border: 1px solid #1f2937;
   border-radius: 12px;
   padding: 1.5rem;
-  margin: 1.5rem auto;   /* bikin posisi card ke tengah */
-  max-width: 700px;      /* biar nggak melebar penuh */
+  margin: 1.5rem auto; 
+  max-width: 700px; 
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease;
-  text-align: left;      /* pastikan tulisan tetap rata kiri */
+  text-align: left; 
 }
 .card:hover {
   transform: translateY(-4px);
@@ -234,55 +238,110 @@ footer {
   margin: 0.4rem 0;
 }
 
-/* === Responsive Design === */
+/* === Starfield Background === */
+#starfield {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: #0b0f13;
+  pointer-events: none; 
+  display: block;
+}
+
+/* === Responsive Design (Mobile: Max 768px) === */
 @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
-  }
+    
+    /* Perbaikan Header Mobile */
+    header {
+        /* Kembali ke layout baris agar nama dan burger sejajar */
+        flex-direction: row; 
+        align-items: center;
+        padding: 1rem;
+    }
+    
+    /* Batasi lebar teks agar tidak menimpa tombol burger */
+    header div {
+        width: 75%; 
+    }
+    
+    /* 1. Tampilkan Tombol Burger */
+    .burger-menu-btn {
+        display: block; 
+        position: absolute;
+        top: 1rem; /* Jarak dari atas header */
+        right: 1rem; /* Jarak dari kanan header */
+        background: none;
+        border: none;
+        color: white; 
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 1001; 
+    }
 
-  nav {
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    margin-top: 1rem;
-  }
+    /* 2. Navigasi Mobile (KUNCI: Sembunyikan secara default) */
+    #main-nav {
+        display: none; /* Sembunyikan default */
+        
+        /* Gaya Overlay Mobile */
+        flex-direction: column;
+        position: fixed; 
+        top: 0;
+        right: 0; /* Menu muncul dari kanan */
+        width: 70%; /* Lebar menu */
+        height: 100%; 
+        background-color: #111827; /* Latar belakang menu */
+        padding: 80px 20px 20px;
+        z-index: 1000;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
 
-  nav a, nav button, nav select {
-    width: 100%;
-    margin-left: 0;
-  }
+        /* Animasi Slide */
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(100%); /* Sembunyikan di luar layar (ke kanan) */
+    }
 
-  section {
-    padding: 0 0.5rem;
-  }
+    /* 3. Aturan Tampilkan Navigasi */
+    #main-nav.active {
+        display: flex; 
+        transform: translateX(0); /* Geser masuk ke layar */
+    }
 
-  .card {
-    padding: 1rem;
-    font-size: 0.95rem;
-  }
+    /* 4. Gaya Tombol di dalam Burger */
+    #main-nav button,
+    #main-nav select {
+        width: 100%; 
+        margin-bottom: 15px; 
+        padding: 15px;
+        text-align: center;
+    }
 
-  .typing {
-    font-size: 1.2rem;
-    animation: typing 3s steps(20, end), blink 0.7s step-end infinite;
-  }
-
-  .timeline {
-    border-left: none;
-    padding-left: 0;
-    margin-left: 0;
-  }
-  .timeline-item::before {
-    display: none;
-  }
-
-  .modal-content {
-    width: 95%;
-    max-width: 100%;
-    height: 90%;
-    overflow-y: auto;
-  }
+    /* Perbaikan Responsive Lain */
+    .typing {
+        /* Animasi di mobile */
+        animation: typing 3s steps(20, end), blink 0.7s step-end infinite;
+    }
+    @keyframes typing {
+        from { width: 0 }
+        to { width: 100% } 
+    }
+    
+    .timeline {
+        /* Hilangkan border vertikal di mobile */
+        border-left: none;
+        padding-left: 0;
+        margin-left: 0;
+    }
+    .timeline-item::before {
+        /* Hilangkan bullet point custom di mobile */
+        display: none;
+    }
+    
+    .modal-content {
+        width: 95%;
+        height: 90%;
+    }
 }
 
 @media (max-width: 480px) {
@@ -296,86 +355,4 @@ footer {
     font-size: 0.75rem;
     padding: 0.2rem 0.5rem;
   }
-}
-
-/* === Starfield Background === */
-#starfield {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: #0b0f13;
-}
-
-#starfield {
-  position: fixed;     
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;         
-  pointer-events: none; 
-  display: block;
-}
-
-/* Sembunyikan tombol burger secara default */
-.burger-menu-btn {
-    display: none; 
-}
-
-/* Pastikan nav ditampilkan secara default */
-header nav {
-    display: flex; /* Atur tampilan horizontal untuk desktop */
-    gap: 10px; /* Jarak antar tombol */
-}
-
-@media (max-width: 768px) {
-    
-    /* 1. Tampilkan tombol burger dan sembunyikan nav */
-    .burger-menu-btn {
-        display: block; /* Tampilkan tombol burger */
-        position: absolute; /* Posisikan bebas */
-        top: 20px;
-        right: 20px;
-        background: none;
-        border: none;
-        color: white; /* Sesuaikan warna */
-        font-size: 30px;
-        cursor: pointer;
-        z-index: 1001; /* Pastikan di atas elemen lain */
-    }
-
-    /* 2. Navigasi mobile - Sembunyikan secara default */
-    header nav {
-        /* Ubah menjadi menu vertikal full-screen/side-bar */
-        display: none; 
-        flex-direction: column;
-        position: fixed; /* Navigasi mengambang di atas konten */
-        top: 0;
-        right: 0;
-        width: 100%; /* Lebar penuh */
-        height: 100%; /* Tinggi penuh */
-        background-color: rgba(0, 0, 0, 0.95); /* Latar belakang gelap transparan */
-        padding: 80px 20px 20px;
-        z-index: 1000;
-        transition: transform 0.3s ease-in-out;
-        transform: translateX(100%); /* Sembunyikan di luar layar */
-    }
-
-    /* 3. Kelas untuk menampilkan nav saat tombol diklik */
-    header nav.active {
-        display: flex;
-        transform: translateX(0); /* Geser masuk ke layar */
-    }
-
-    /* 4. Atur tampilan tombol-tombol di dalam menu */
-    header nav button,
-    header nav select {
-        width: 100%; /* Lebar penuh agar mudah diklik */
-        margin-bottom: 15px; /* Jarak antar tombol */
-        padding: 15px;
-        text-align: left;
-    }
 }

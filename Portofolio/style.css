@@ -49,6 +49,7 @@ nav {
   gap: 0.5rem;
 }
 
+/* Aturan dasar untuk semua elemen nav */
 nav a, nav button, nav select {
   background: #1f2937;
   border: 1px solid #374151;
@@ -262,12 +263,14 @@ footer {
         padding: 1rem;
     }
     
-    /* Batasi lebar teks agar tidak menimpa tombol burger */
+    /* 1. Kunci Margin pada Nama (Mencegah Tabrakan) */
+    /* Asumsi nama dan role ada di dalam tag div */
     header div {
-        width: 75%; 
+        /* Memberi ruang di sebelah kanan untuk tombol burger */
+        margin-right: 50px; 
     }
     
-    /* 1. Tampilkan Tombol Burger */
+    /* 2. Tampilkan Tombol Burger */
     .burger-menu-btn {
         display: block; 
         position: absolute;
@@ -281,7 +284,7 @@ footer {
         z-index: 1001; 
     }
 
-    /* 2. Navigasi Mobile (KUNCI: Sembunyikan secara default) */
+    /* 3. Navigasi Mobile (KUNCI: Sembunyikan secara default) */
     #main-nav {
         display: none; /* Sembunyikan default */
         
@@ -289,37 +292,46 @@ footer {
         flex-direction: column;
         position: fixed; 
         top: 0;
-        right: 0; /* Menu muncul dari kanan */
-        width: 70%; /* Lebar menu */
+        right: 0; 
+        width: 70%; 
         height: 100%; 
-        background-color: #111827; /* Latar belakang menu */
+        background-color: #111827; /* Latar belakang menu agar tombol tidak tembus pandang */
         padding: 80px 20px 20px;
         z-index: 1000;
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
 
         /* Animasi Slide */
         transition: transform 0.3s ease-in-out;
-        transform: translateX(100%); /* Sembunyikan di luar layar (ke kanan) */
+        transform: translateX(100%); 
     }
 
-    /* 3. Aturan Tampilkan Navigasi */
+    /* 4. Aturan Tampilkan Navigasi */
     #main-nav.active {
         display: flex; 
-        transform: translateX(0); /* Geser masuk ke layar */
+        transform: translateX(0); 
     }
 
-    /* 4. Gaya Tombol di dalam Burger */
+    /* 5. Gaya Tombol di dalam Burger (Solusi Latar Belakang Hilang) */
     #main-nav button,
     #main-nav select {
         width: 100%; 
         margin-bottom: 15px; 
         padding: 15px;
         text-align: center;
+        /* Mengunci latar belakang untuk semua tombol di dalam menu */
+        background: #1f2937 !important; 
+        border: 1px solid #374151;
+        transition: background 0.2s, transform 0.2s;
+    }
+    
+    /* Pastikan glow-btn (Download CV) tetap terlihat beda */
+    #main-nav .glow-btn {
+        background: #2563eb !important;
+        border: none;
     }
 
     /* Perbaikan Responsive Lain */
     .typing {
-        /* Animasi di mobile */
         animation: typing 3s steps(20, end), blink 0.7s step-end infinite;
     }
     @keyframes typing {
@@ -328,13 +340,11 @@ footer {
     }
     
     .timeline {
-        /* Hilangkan border vertikal di mobile */
         border-left: none;
         padding-left: 0;
         margin-left: 0;
     }
     .timeline-item::before {
-        /* Hilangkan bullet point custom di mobile */
         display: none;
     }
     

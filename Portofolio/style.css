@@ -230,12 +230,14 @@ footer {
   pointer-events: none;
 }
 
-/* === Mobile Styles (max-width 768px) === */
-.burger-menu-btn { display: none; }
-
+/* === Mobile Styles Fixed (max-width 768px) === */
 @media (max-width: 768px) {
 
-  header { flex-direction: row; align-items: center; padding:1rem; }
+  header {
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem;
+  }
 
   header h1 {
     white-space: normal;
@@ -257,29 +259,39 @@ footer {
     z-index: 1001;
   }
 
-  /* Mobile nav slide dari kanan, sepenuhnya tersembunyi */
+  /* Mobile nav */
   #main-nav {
     display: flex;
     flex-direction: column;
     position: fixed;
     top: 0;
-    right: -70vw;      /* gunakan vw agar proporsional */
+    right: 0;
     width: 70vw;
-    max-width: 300px;  /* mencegah terlalu lebar di tablet */
+    max-width: 300px;
     height: 100vh;
     background: #111827;
     padding: 6rem 20px 40px;
-    transition: right 0.3s ease;
+    transition: transform 0.3s ease;
     z-index: 1000;
     overflow-y: auto;
     overflow-x: hidden;
+    transform: translateX(100%);  /* Sembunyikan sepenuhnya ke kanan */
+    clip-path: inset(0 100% 0 0); /* Tambahan jaga-jaga */
   }
 
-  #main-nav.active { right: 0; }
+  #main-nav.active {
+    transform: translateX(0);    /* Tampilkan */
+    clip-path: inset(0 0 0 0);  /* Reset clip */
+  }
 
-  body.menu-active { overflow: hidden; width: 100%; }
+  body.menu-active {
+    overflow: hidden;
+    width: 100%;
+  }
 
-  #main-nav button, #main-nav a, #main-nav select {
+  #main-nav button,
+  #main-nav a,
+  #main-nav select {
     width: 100%;
     margin-bottom: 15px;
     padding: 15px;
@@ -288,15 +300,36 @@ footer {
     background: #1f2937;
     border: 1px solid #374151;
   }
-  #main-nav .glow-btn { background: #2563eb; border: none; color: white; }
 
-  .timeline { border-left: none; padding-left:0; margin-left:0; }
-  .timeline-item::before { display: none; }
+  #main-nav .glow-btn {
+    background: #2563eb;
+    border: none;
+    color: white;
+  }
 
-  .typing { animation: typing 3s steps(20,end), blink 0.7s step-end infinite; }
-  @keyframes typing { from {width:0} to {width:100%} }
+  .timeline {
+    border-left: none;
+    padding-left: 0;
+    margin-left: 0;
+  }
 
-  .modal-content { width: 95%; height: 90%; }
+  .timeline-item::before {
+    display: none;
+  }
+
+  .typing {
+    animation: typing 3s steps(20, end), blink 0.7s step-end infinite;
+  }
+
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+  .modal-content {
+    width: 95%;
+    height: 90%;
+  }
 }
 
 /* Extra small screens */

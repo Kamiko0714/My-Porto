@@ -40,6 +40,8 @@ header {
 header h1 {
   font-size: 1.5rem;
   margin: 0;
+  /* Kunci lebar agar tidak memanjang dan menabrak tombol burger di mobile */
+  white-space: nowrap; 
 }
 
 /* Navigasi Desktop (Normal) */
@@ -261,21 +263,25 @@ footer {
         flex-direction: row; 
         align-items: center;
         padding: 1rem;
+        /* Pastikan elemen di dalamnya tidak terpotong */
+        overflow: hidden; 
     }
     
-    /* 1. Kunci Margin pada Nama (Mencegah Tabrakan) */
-    /* Asumsi nama dan role ada di dalam tag div */
-    header div {
-        /* Memberi ruang di sebelah kanan untuk tombol burger */
-        margin-right: 50px; 
+    /* 1. Mengatasi Tabrakan Judul */
+    header h1 {
+        /* Memastikan judul tidak memanjang melewati batas yang diizinkan */
+        max-width: calc(100% - 70px); 
+        overflow: hidden; 
+        text-overflow: ellipsis; 
+        white-space: nowrap; 
     }
     
     /* 2. Tampilkan Tombol Burger */
     .burger-menu-btn {
         display: block; 
         position: absolute;
-        top: 1rem; /* Jarak dari atas header */
-        right: 1rem; /* Jarak dari kanan header */
+        top: 1rem; 
+        right: 1rem; 
         background: none;
         border: none;
         color: white; 
@@ -286,19 +292,23 @@ footer {
 
     /* 3. Navigasi Mobile (KUNCI: Sembunyikan secara default) */
     #main-nav {
-        display: none; /* Sembunyikan default */
+        display: none; 
         
         /* Gaya Overlay Mobile */
         flex-direction: column;
         position: fixed; 
         top: 0;
         right: 0; 
+        /* PERBAIKAN: Gunakan 100vh agar menu tidak terpotong */
+        height: 100vh; 
         width: 70%; 
-        height: 100%; 
-        background-color: #111827; /* Latar belakang menu agar tombol tidak tembus pandang */
-        padding: 80px 20px 20px;
+        background-color: #111827; 
+        /* PERBAIKAN: Tambahkan padding atas yang lebih besar agar konten tidak tersembunyi di bawah header/tombol close */
+        padding: 6rem 20px 20px; 
         z-index: 1000;
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+        /* Jika item menu sangat banyak, menu akan bisa di-scroll */
+        overflow-y: auto; 
 
         /* Animasi Slide */
         transition: transform 0.3s ease-in-out;
@@ -311,17 +321,20 @@ footer {
         transform: translateX(0); 
     }
 
-    /* 5. Gaya Tombol di dalam Burger (Solusi Latar Belakang Hilang) */
+    /* 5. Gaya Tombol di dalam Burger (Solusi Latar Belakang Hilang pada semua elemen Nav) */
+    #main-nav a,
     #main-nav button,
     #main-nav select {
         width: 100%; 
         margin-bottom: 15px; 
         padding: 15px;
         text-align: center;
-        /* Mengunci latar belakang untuk semua tombol di dalam menu */
+        /* Mengunci latar belakang agar tidak hilang */
         background: #1f2937 !important; 
         border: 1px solid #374151;
         transition: background 0.2s, transform 0.2s;
+        /* Pastikan elemen 'a' juga terlihat seperti tombol, bukan hanya teks link */
+        display: block; 
     }
     
     /* Pastikan glow-btn (Download CV) tetap terlihat beda */

@@ -299,12 +299,13 @@ footer {
         position: fixed; 
         top: 0;
         right: 0; 
-        /* PERBAIKAN: Gunakan 100vh agar menu tidak terpotong */
-        height: 100vh; 
+        /* Menggunakan 100vh dan auto agar menu dapat mengisi penuh dan di-scroll */
+        min-height: 100vh;
+        height: auto;
         width: 70%; 
         background-color: #111827; 
-        /* PERBAIKAN: Tambahkan padding atas yang lebih besar agar konten tidak tersembunyi di bawah header/tombol close */
-        padding: 6rem 20px 20px; 
+        /* Padding atas dan bawah yang cukup (40px di bawah untuk mengatasi toolbar browser) */
+        padding: 6rem 20px 40px; 
         z-index: 1000;
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
         /* Jika item menu sangat banyak, menu akan bisa di-scroll */

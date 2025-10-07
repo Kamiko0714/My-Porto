@@ -29,7 +29,7 @@
       <h2 id="listTitle">Daftar Proyek</h2>
 
       <div class="project-item">
-        <img src="../sertifikat/1.jpg" alt="Asisten Laboratorium" class="project-img">
+        <img src="../sertifikat/1.jpg" alt="Asisten Laboratorium" class="project-img" loading="lazy">
         <div class="project-text">
           <h3 class="proj-title">👨‍💻 Asisten Laboratorium</h3>
           <p class="proj-desc">Deskripsi awal...</p>
@@ -37,7 +37,7 @@
       </div>
 
       <div class="project-item">
-        <img src="../projects/img/iot.png" alt="Voltnesia" class="project-img">
+        <img src="../projects/img/iot.png" alt="Voltnesia IoT Project" class="project-img" loading="lazy">
         <div class="project-text">
           <h3 class="proj-title">🎓 Voltnesia</h3>
           <p class="proj-desc">Deskripsi awal...</p>
@@ -45,17 +45,17 @@
       </div>
 
       <div class="project-item">
-        <img src="../projects/img/iot.png" alt="Voltnesia" class="project-img">
+        <img src="../projects/img/cluster.jpg" alt="Infrastruktur & DevOps" class="project-img" loading="lazy">
         <div class="project-text">
-          <h3 class="proj-title">🎓 Voltnesia</h3>
+          <h3 class="proj-title">👨‍💻 Infrastruktur & DevOps</h3>
           <p class="proj-desc">Deskripsi awal...</p>
         </div>
       </div>
 
       <div class="project-item">
-        <img src="../projects/img/iot.png" alt="Voltnesia" class="project-img">
+        <img src="../projects/img/Otomasi Server.png" alt="Otomasi Server via Mobile" class="project-img" loading="lazy">
         <div class="project-text">
-          <h3 class="proj-title">🎓 Voltnesia</h3>
+          <h3 class="proj-title">📱 Otomasi Server via Mobile</h3>
           <p class="proj-desc">Deskripsi awal...</p>
         </div>
       </div>
@@ -63,18 +63,22 @@
   </main>
 
   <footer>
-    © <script>document.write(new Date().getFullYear());</script> <span id="footer-name">Kamiko0714</span>.
+    © <script>document.write(new Date().getFullYear());</script>
+    <span id="footer-name">Kamiko0714</span>.
   </footer>
 
-  <!-- Starfield -->
-  <script src="../starfield.js" defer></script>
+  <!-- Modal gambar -->
+  <div id="imgModal" class="img-modal" role="dialog" aria-modal="true" tabindex="-1">
+    <span class="close" aria-label="Tutup tampilan gambar">&times;</span>
+    <img class="modal-content" id="modalImage" alt="Tampilan penuh proyek">
+  </div>
 
-  <!-- Bahasa -->
+  <!-- Script -->
+  <script src="../starfield.js" defer></script>
   <script src="../projects/lang/id.js" defer></script>
   <script src="../projects/lang/en.js" defer></script>
   <script src="../projects/lang/jp.js" defer></script>
-
-  <!-- Switcher -->
   <script src="../projects/lang-switcher.js" defer></script>
+  <script src="../projects/image-popup.js" defer></script>
 </body>
 </html>

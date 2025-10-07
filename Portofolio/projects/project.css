@@ -87,3 +87,52 @@ footer {
   margin: 3rem 0 1rem;
   color: #94a3b8;
 }
+
+/* Modal background */
+.img-modal {
+  display: none; /* tersembunyi dulu */
+  position: fixed;
+  z-index: 9999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(5px);
+  text-align: center;
+}
+
+/* Gambar di dalam modal */
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  animation: zoomIn 0.3s ease;
+}
+
+/* Tombol close */
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close:hover {
+  color: #ff5555;
+}
+
+/* Animasi masuk */
+@keyframes zoomIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

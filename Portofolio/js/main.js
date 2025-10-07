@@ -86,24 +86,30 @@ document.addEventListener("DOMContentLoaded", () => {
     // II. LOGIKA BURGER MENU (BARU)
     // =======================================================
 
+    // Burger menu toggle
     if (burgerBtn && mainNav) {
-        // Toggle menu saat tombol burger diklik
         burgerBtn.addEventListener('click', () => {
             mainNav.classList.toggle('active');
-            // Ganti ikon burger menjadi 'X' saat terbuka
-            burgerBtn.innerHTML = mainNav.classList.contains('active') ? '✕' : '☰'; 
+
+            // Tambahkan/remove class menu-active di body
+            document.body.classList.toggle('menu-active', mainNav.classList.contains('active'));
+
+            // Ubah ikon burger
+            burgerBtn.innerHTML = mainNav.classList.contains('active') ? '✕' : '☰';
         });
-        
-        // Tutup menu saat tombol navigasi di dalamnya diklik (hanya di mobile)
-        const navItems = mainNav.querySelectorAll('button:not(#terminal-btn), select');
+
+        // Tutup menu saat item diklik (mobile)
+        const navItems = mainNav.querySelectorAll('button, select');
         navItems.forEach(item => {
             item.addEventListener('click', () => {
-                if (isMobileView()) {
+                if (window.innerWidth <= 768) {
                     mainNav.classList.remove('active');
-                    burgerBtn.innerHTML = '☰'; 
+                    document.body.classList.remove('menu-active');
+                    burgerBtn.innerHTML = '☰';
                 }
             });
         });
+
         
         // Tutup menu burger juga saat Terminal dibuka
         if (terminalBtn) {

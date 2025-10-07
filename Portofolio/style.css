@@ -38,7 +38,7 @@ header {
 header h1 {
   font-size: 1.5rem;
   margin: 0;
-  white-space: nowrap;
+  white-space: nowrap; /* desktop tetap satu baris */
   max-width: calc(100% - 70px);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -231,12 +231,20 @@ footer {
 }
 
 /* === Responsive: Mobile (max-width 768px) === */
-.burger-menu-btn { display: none; } /* default desktop hidden */
+.burger-menu-btn { display: none; } /* desktop hidden */
 
 @media (max-width: 768px) {
+
+  /* Header & burger menu */
   header { flex-direction: row; align-items: center; padding:1rem; }
 
-  /* Burger menu muncul hanya di mobile */
+  header h1 {
+    white-space: normal; /* biarkan wrap di mobile */
+    overflow: visible;
+    text-overflow: clip;
+    line-height: 1.3; /* spasi antar baris */
+  }
+
   .burger-menu-btn {
     display: block;
     position: absolute;

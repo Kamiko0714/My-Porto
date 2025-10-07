@@ -6,7 +6,7 @@ body {
   font-family: 'Fira Code', monospace;
   background-color: #0b0f13;
   color: #e2e8f0;
-  overflow-x: hidden; /* cegah horizontal scroll default */
+  overflow-x: hidden; /* cegah horizontal scroll */
 }
 
 h1, h2, h3 {
@@ -66,7 +66,6 @@ nav a:hover, nav button:hover {
   transform: translateY(-2px);
 }
 
-/* Glow button khusus Download CV */
 .glow-btn {
   background: #2563eb;
   border: none;
@@ -76,7 +75,6 @@ nav a:hover, nav button:hover {
   cursor: pointer;
   transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
-
 .glow-btn:hover {
   box-shadow: 0 0 10px #2563eb, 0 0 20px #2563eb;
   transform: translateY(-2px);
@@ -103,7 +101,6 @@ section {
   transform: translateY(-4px);
 }
 
-/* Badges */
 .badge {
   display: inline-block;
   background: #1f2937;
@@ -231,14 +228,13 @@ footer {
   pointer-events: none;
 }
 
-/* === Responsive: Mobile (max-width 768px) === */
-.burger-menu-btn { display: none; } /* desktop hidden */
+/* === Mobile Styles (max-width 768px) === */
+.burger-menu-btn { display: none; }
 
 @media (max-width: 768px) {
 
   header { flex-direction: row; align-items: center; padding:1rem; }
 
-  /* Header title wrap di mobile */
   header h1 {
     white-space: normal;
     overflow: visible;
@@ -246,7 +242,6 @@ footer {
     line-height: 1.3;
   }
 
-  /* Burger menu muncul di mobile */
   .burger-menu-btn {
     display: block;
     position: absolute;
@@ -260,26 +255,24 @@ footer {
     z-index: 1001;
   }
 
-  /* Mobile nav */
+  /* Mobile nav slide dari kanan, tetap tersembunyi */
   #main-nav {
     display: flex;
     flex-direction: column;
     position: fixed;
     top: 0;
-    right: 0;
+    right: -70%; /* start offscreen */
     width: 70%;
     height: 100vh;
     background: #111827;
     padding: 6rem 20px 40px;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
+    transition: right 0.3s ease;
     z-index: 1000;
     overflow-y: auto;
-    overflow-x: hidden;
   }
-  #main-nav.active { transform: translateX(0); }
 
-  /* Lock body saat menu mobile terbuka */
+  #main-nav.active { right: 0; }
+
   body.menu-active { overflow: hidden; width: 100%; }
 
   #main-nav button, #main-nav a, #main-nav select {
@@ -293,15 +286,12 @@ footer {
   }
   #main-nav .glow-btn { background: #2563eb; border: none; color: white; }
 
-  /* Timeline mobile */
   .timeline { border-left: none; padding-left:0; margin-left:0; }
   .timeline-item::before { display: none; }
 
-  /* Typing animation mobile */
   .typing { animation: typing 3s steps(20,end), blink 0.7s step-end infinite; }
   @keyframes typing { from {width:0} to {width:100%} }
 
-  /* Modal content */
   .modal-content { width: 95%; height: 90%; }
 }
 

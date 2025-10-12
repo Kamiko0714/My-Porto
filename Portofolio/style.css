@@ -162,11 +162,13 @@ nav button:hover {
   }
 }
 
-/* === Desktop Mode === */
 @media (min-width: 769px) {
   #main-nav {
-    position: static;
+    display: flex;
     flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    position: static;
     background: transparent;
     box-shadow: none;
     transform: none !important;
@@ -181,6 +183,7 @@ nav button:hover {
     text-align: center;
   }
 }
+
 
 /* === Sections & Cards === */
 section {

@@ -1,4 +1,20 @@
 // js/main.js
+
+// --- Burger Menu Elements (diakses sebelum DOMContentLoaded) ---
+const burgerBtn = document.getElementById('burger-menu-btn');
+const mainNav = document.getElementById('main-nav');
+
+// 🚫 Pastikan menu tertutup saat load halaman
+if (mainNav) {
+    mainNav.classList.remove('active');
+    document.body.classList.remove('menu-active');
+}
+
+// 🔍 Debugging untuk cek class "active" tertinggal
+window.addEventListener('DOMContentLoaded', () => {
+    console.log('Nav state on load:', mainNav?.classList.contains('active'));
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     // ⚠️ Pastikan file bahasa sudah diload
     if (!window.langID || !window.langEN || !window.langJP) {
@@ -21,9 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const projBtn = document.getElementById('projBtn');
     const downloadBtn = document.getElementById('downloadBtn');
 
-    // --- Burger Menu Elements ---
-    const burgerBtn = document.getElementById('burger-menu-btn');
-    const mainNav = document.getElementById('main-nav');
     const isMobileView = () => window.innerWidth <= 768;
 
     // =======================================================
@@ -40,17 +53,17 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('projects-desc').innerHTML = data.projectsDesc;
         document.getElementById('contact-title').innerHTML = data.contactTitle;
 
-        // Update tombol navigasi
+        // Tombol navigasi
         if (downloadBtn) downloadBtn.innerHTML = (lang === 'id') ? "Unduh CV" : (lang === 'en') ? "Download Resume" : "履歴書をダウンロード";
         if (certBtn) certBtn.innerHTML = (lang === 'id') ? "Sertifikat" : (lang === 'en') ? "Certificates" : "認定証";
         if (projBtn) projBtn.innerHTML = (lang === 'id') ? "Kegiatan" : (lang === 'en') ? "Activity" : "活動";
 
-        // Reset terminal
+        // Terminal
         outputContainer.innerHTML = "";
         document.getElementById('terminal-welcome').innerHTML = `<span class="prompt">visitor@portfolio:~$</span> ${data.terminalWelcome}`;
         document.getElementById('terminal-help').innerHTML = data.terminalHelp;
 
-        // Terminal JP overlay
+        // Overlay JP
         const jpOverlay = document.getElementById('jp-locked');
         const terminalBox = document.getElementById('terminal-box');
         if (lang === 'jp') {
@@ -74,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         burgerBtn.addEventListener('click', toggleMenu);
 
-        // Tutup menu saat item diklik di mobile
+        // Tutup menu saat item diklik (mobile)
         mainNav.querySelectorAll('button, select').forEach(item => {
             item.addEventListener('click', () => {
                 if (isMobileView()) {
@@ -85,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        // Tutup menu saat membuka terminal
+        // Tutup menu saat membuka terminal (mobile)
         if (terminalBtn) {
             terminalBtn.addEventListener('click', () => {
                 if (isMobileView() && mainNav.classList.contains('active')) {
@@ -176,9 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (downloadBtn) {
         downloadBtn.addEventListener('click', () => {
-            let filePath = '';
-            if (currentLang === 'id') filePath = 'cv/cv.pdf';
-            else filePath = 'cv/resume.pdf';
+            let filePath = (currentLang === 'id') ? 'cv/cv.pdf' : 'cv/resume.pdf';
             const link = document.createElement('a');
             link.href = filePath;
             link.download = filePath.split('/').pop();
@@ -187,4 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.body.removeChild(link);
         });
     }
+
+    // ✅ Tambahkan class untuk mencegah FOUC (Flash of Unstyled Content)
+    document.body.classList.add('js-loaded');
 });

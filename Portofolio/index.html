@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,21 +8,22 @@
 </head>
 
 <body>
-
   <canvas id="starfield"></canvas>
 
   <!-- Header -->
   <header>
     <div class="header-info">
       <h1 id="name" class="typing">Dewa Athallah Putra Kamiko</h1>
-      <p id="role">Interest in IT Infrastructure, Platform Engineering, System Administration, and DevOps.</p>
+      <p id="role">
+        Interest in IT Infrastructure, Platform Engineering, System Administration, and DevOps.
+      </p>
     </div>
 
     <!-- Tombol burger hanya muncul di mobile -->
     <button id="burger-menu-btn" class="burger-menu-btn" aria-label="Toggle Menu">☰</button>
 
-    <!-- Satu nav universal -->
-    <nav id="main-nav" aria-label="Main Navigation">
+    <!-- Tambahkan class "hidden-nav" agar nav selalu tertutup default -->
+    <nav id="main-nav" class="hidden-nav" aria-label="Main Navigation">
       <button id="downloadBtn" class="glow-btn">Download CV</button>
       <button id="certBtn">Sertifikat</button>
       <button id="projBtn">Kegiatan</button>
@@ -109,7 +109,8 @@
 
   <!-- Footer -->
   <footer>
-    © <script>document.write(new Date().getFullYear());</script> <span id="footer-name">Kamiko0714</span>.
+    © <script>document.write(new Date().getFullYear());</script>
+    <span id="footer-name">Kamiko0714</span>.
   </footer>
 
   <!-- JS Files -->
@@ -117,7 +118,18 @@
   <script src="js/lang-id.js" defer></script>
   <script src="js/lang-en.js" defer></script>
   <script src="js/lang-jp.js" defer></script>
-  <script src="js/main.js" defer></script>
 
+  <!-- Tambahkan ini SEBELUM main.js -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const nav = document.getElementById("main-nav");
+      const body = document.body;
+      // Reset menu agar selalu tertutup di awal load/refresh
+      nav.classList.remove("active");
+      body.classList.remove("menu-active");
+    });
+  </script>
+
+  <script src="js/main.js" defer></script>
 </body>
 </html>

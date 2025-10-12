@@ -33,7 +33,7 @@ header {
   box-shadow: 0 2px 6px rgba(0,0,0,0.6);
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 1000; /* cukup tinggi tapi di bawah drawer */
 }
 
 header h1 {
@@ -95,6 +95,7 @@ nav button:hover {
     padding: 1rem;
     flex-direction: row;
     align-items: center;
+    z-index: 2000; /* di atas semua konten biasa */
   }
 
   header h1 {
@@ -106,7 +107,7 @@ nav button:hover {
     overflow: visible;
   }
 
-  /* Burger button muncul */
+  /* Burger button */
   .burger-menu-btn {
     display: block;
     position: absolute;
@@ -118,7 +119,7 @@ nav button:hover {
     border: none;
     color: white;
     cursor: pointer;
-    z-index: 1001;
+    z-index: 3000; /* di atas drawer */
     padding: 5px;
   }
 
@@ -135,18 +136,19 @@ nav button:hover {
     background: #111827;
     padding: 70px 20px 40px;
     box-shadow: -5px 0 15px rgba(0,0,0,0.5);
-    transition: transform 0.3s ease;
-    transform: translateX(100%) !important; /* default tertutup */
-    z-index: 1000;
-    visibility: visible;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 2500; /* di atas header, di bawah burger */
   }
 
-  /* Nav aktif saat tombol diklik */
   #main-nav.active {
     transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
   }
 
-  /* Cegah scroll di belakang */
   body.menu-active {
     overflow: hidden;
   }
@@ -185,6 +187,8 @@ section {
   max-width: 800px;
   margin: 2rem auto;
   padding: 0 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 .card {
@@ -196,6 +200,8 @@ section {
   max-width: 700px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   transition: transform 0.2s ease;
+  position: relative;
+  z-index: 1;
 }
 .card:hover {
   transform: translateY(-4px);
@@ -254,13 +260,15 @@ footer {
   font-size: 0.9rem;
   border-top: 1px solid #1f2937;
   margin-top: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 /* Terminal Modal */
 .modal {
   display: none;
   position: fixed;
-  z-index: 10;
+  z-index: 5000; /* di atas semua UI */
   left: 0;
   top: 0;
   width: 100%;
@@ -324,7 +332,7 @@ footer {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 0;
   background: #0b0f13;
   pointer-events: none;
 }

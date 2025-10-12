@@ -344,3 +344,49 @@ footer {
 @media (max-width: 768px) {
   body { font-size: 14px; }
 }
+
+/* === Fix: Navbar Desktop Hilang === */
+@media (min-width: 769px) {
+  #main-nav {
+    display: flex !important;       /* pastikan muncul */
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+
+    position: static !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    transform: none !important;     /* hilangkan efek drawer */
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    height: auto !important;
+    padding: 0;
+    visibility: visible !important;
+    z-index: 50 !important;
+  }
+
+  #main-nav button,
+  #main-nav select {
+    width: auto;
+    margin: 0;
+    text-align: center;
+    background: #1f2937;
+    border: 1px solid #374151;
+    color: #e2e8f0;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  #main-nav button:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+  }
+
+  /* burger hilang di desktop */
+  .burger-menu-btn {
+    display: none !important;
+  }
+}

@@ -187,17 +187,34 @@ document.addEventListener("DOMContentLoaded", () => {
   if (certBtn) certBtn.addEventListener('click', () => { window.location.href = "sertifikat.html"; });
   if (projBtn) projBtn.addEventListener('click', () => { window.location.href = "projects/projects.html"; });
 
-  if (downloadBtn) {
-    downloadBtn.addEventListener('click', () => {
-      const filePath = (currentLang === 'id') ? 'cv/cv.pdf' : 'cv/resume.pdf';
-      const link = document.createElement('a');
-      link.href = filePath;
-      link.download = filePath.split('/').pop();
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    });
-  }
+if (downloadBtn) {
+  downloadBtn.addEventListener('click', async () => {
+    const fileUrl = (currentLang === 'id')
+      ? 'https://kamiko0714.cyou/CV/CV.pdf'
+      : 'https://kamiko0714.cyou/CV/Resume.pdf';
+
+    try {
+      const response = await fetch(fileUrl);
+      if (!response.ok) throw new Error('Network error');
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Kamiko-CV.pdf';
+      document.body.appendChild(a);
+      a.click();
+
+      setTimeout(() => {
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+      }, 500);
+    } catch (err) {
+      console.error('Download failed:', err);
+      alert('Gagal mengunduh file.');
+    }
+  });
+}
 
   // --- [H] FOUC fix ---
   document.body.classList.add('js-loaded');
